@@ -54,6 +54,10 @@ services:
 
   sidekiq:
     build: .
+    depends_on:
+      - "db"
+      - "redis"
+      - "web"
     command: bundle exec sidekiq
     volumes:
       - ./:/rails-app
@@ -68,8 +72,6 @@ services:
       DB_NAME: ecs_application_db
       DB_PORT: 5432
       DB_HOST: db
-    depends_on:
-      - "redis"
 
 volumes:
   db:
