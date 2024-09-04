@@ -1,13 +1,15 @@
 FROM ruby:3.1.3
 
+
 # install rails dependencies
 RUN apt-get clean all && apt-get update -qq && apt-get install -y build-essential libpq-dev \
-    curl gnupg2 apt-utils  postgresql-client postgresql-server-dev-all git libcurl3-dev cmake \
-    libssl-dev pkg-config openssl imagemagick file nodejs npm yarn
+curl gnupg2 apt-utils  postgresql-client postgresql-server-dev-all git libcurl3-dev cmake \
+libssl-dev pkg-config openssl imagemagick file nodejs npm yarn
 
 
 RUN mkdir /rails-app
 WORKDIR /rails-app
+ENV BUNDLE_PATH /bundle
 
 # Adding gems
 COPY Gemfile Gemfile
