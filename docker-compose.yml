@@ -11,6 +11,7 @@ services:
       - 5432:5432
     networks:
       - my_app
+
   redis:
     image: redis:latest
     command: redis-server
